@@ -1,0 +1,26 @@
+<ui>:
+    MDScreen:
+        name:'screen_principal'
+        md_bg_color: 0,.5,.5,1
+        MDBoxLayout:
+            orientation:'vertical'
+            MDBoxLayout:
+                size_hint: 1, .2
+                orientation: 'horizontal'
+                padding: '10dp'
+                MDCard:
+                    radius:'10dp'
+                    padding:'10dp'
+                    line_color:1,0,1,1
+                    MDLabel:
+                        text: "Aplicacion de tecnologia"
+                        haling:'center'
+                        pos_hint: {'center_y': 0.5,'center_y': 0.5}
+                    MDSwitch:
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        on_active:
+                            app.change_style(*args)
+
+            MDGridLayout:
+                cols: 3
+                size_hint: 1, .8
