@@ -1,0 +1,157 @@
+#: import RiseInTransition kivy.uix.screenmanager.RiseInTransition
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+<ElementCard>
+    radius: '10dp'
+    spacing: '10dp'
+    padding: '10dp'
+    image: ''
+    text: ''
+    sub_text: ''
+    orientation: 'vertical'
+    ripple_behavior: True
+    size_hint_y: None
+    height: "240dp"
+    on_release:
+        app.root.transition = RiseInTransition() # Cambia a la pantalla correspondiente
+
+    Image:
+        source: root.image
+        size_hint_y: None
+        height: "120dp"
+        allow_stretch: True
+        keep_ratio: True
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: root.text
+            halign: 'center'
+            
+        MDLabel:
+            text: root.sub_text
+            halign: 'center'
+
+# Resto del código...
+
+            
+
+<CustomizeScreen@MDBoxLayout>
+    orientation: 'vertical'
+    text: ''
+    padding: 100
+    spacing: "20dp"
+
+    MDLabel:
+        text: root.text
+        halign: 'center'
+        pos_hint: {'center_x': .5}
+
+    MDButton:
+        style: "elevated"              
+        pos_hint: {"center_x": .5, "center_y": .5}
+        on_release:
+            app.root.current = 'screen_principal'
+            app.root.transition = SlideTransition(direction='left')
+        MDButtonIcon:
+            icon: "plus"
+            
+        MDButtonText:
+            text: "Regresar"
+            
+
+
+<Ui>:
+    
+    MDScreen:
+        name:'screen_principal'
+        md_bg_color: 0,.5,.5,1
+        MDBoxLayout:
+            orientation:'vertical'
+            MDBoxLayout:
+                size_hint: 1, .2
+                orientation: 'horizontal'
+                padding: '10dp'
+                MDCard:
+                    radius:'10dp'
+                    padding:'10dp'
+                    line_color:1,0,1,1
+                    MDLabel:
+                        text: "Aplicacion de tecnologia"
+                        halign:'center'
+                        pos_hint: {'center_y':0.5}
+                    MDSwitch:
+                        pos_hint: {'center_y':0.5}
+                        on_active:
+                            app.change_style(*args)
+
+            MDGridLayout:
+                cols: 3
+                size_hint_y: None
+                height: self.minimum_height
+                padding: ['10dp', '10dp', '10dp', '10dp']
+                spacing: '10dp'
+
+                ElementCard:
+                    text:'IA'
+                    sub_text: 'Inteligencia artifical'
+                    image:'image/image1.png'
+                    on_release:
+                        root.current = 'screen1'
+                ElementCard:
+                    text:'BD'
+                    sub_text: 'Inteligencia artifical'
+                    image: 'image/image2.png'
+                    on_release:
+                        root.current = 'screen2'
+                ElementCard:
+                    text:'JUEGOS'
+                    sub_text: 'Inteligencia artifical'
+                    image: 'image/image3.png'
+                    on_release:
+                        root.current = 'screen3'
+                ElementCard:
+                    text:'DRON'
+                    sub_text: 'Inteligencia artifical'
+                    image: 'image/image4.png'
+                    on_release:
+                        root.current = 'screen4'
+                ElementCard:
+                    text:'CODIGOS'
+                    sub_text: 'Inteligencia artifical'
+                    image: 'image/image5.png'
+                    on_release:
+                        root.current = 'screen5'
+                ElementCard:
+                    text:'SEGURIDAD INFORMATICA'
+                    sub_text: 'Inteligencia artifical'
+                    image: 'image/image6.png'
+                    on_release:
+                        root.current = 'screen6'
+
+
+
+    MDScreen:
+        name: 'screen1'
+        CustomizeScreen:
+            text:'Pantalla Uno'        
+    MDScreen:
+        name: 'screen2'
+        CustomizeScreen:
+            text:'Pantalla Dos'
+    MDScreen:
+        name: 'screen3'
+        CustomizeScreen:
+            text:'Pantalla Tres'
+    MDScreen:
+        name: 'screen4'
+        CustomizeScreen:
+            text:'Pantalla Cuatro'
+    MDScreen:
+        name: 'screen5'
+        CustomizeScreen:
+            text:'Pantalla Cinco'
+    MDScreen:
+        name: 'screen6'
+        CustomizeScreen:
+            text:'Pantalla Seis'
